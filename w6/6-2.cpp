@@ -1,13 +1,17 @@
 #include <stdio.h>
-
-int testPalindrome(char word[]){
+#include <ctype.h>
+int testPalindrome(char *word){
 	int count = 0;
 	int detect = 0;
+	char ans[10];
 	for(int i=0 ; word[i]!= '\0' ;i++){
-		count++;
+		if(isalpha(word[i]) && word[i]!=' '){
+			ans[count]= word[i];
+			count++;	
+		}
 	}
 	for(int k=0;k<count/2;k++){
-		if (word[k] != word[count-1-k]){
+		if (ans[k] != ans[count-1-k]){
 			detect++;
 		}
 	}	
@@ -21,7 +25,7 @@ int testPalindrome(char word[]){
 
 int main(){
 	char word[20];
-	scanf("%19s",&word);
+	fgets(word,20,stdin);
 	printf("%d",testPalindrome(word));
 	
 	
